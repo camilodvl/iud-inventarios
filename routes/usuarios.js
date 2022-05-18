@@ -1,5 +1,4 @@
 const {Router} = require('express');
-const res = require('express/lib/response');
 const router = Router();
 const {getUsuarios, setUsuarios} = require('./../controllers/UsuarioController')
 
