@@ -1,7 +1,7 @@
 const Inventario = require('./../models/Inventario');
 
 
-const getInventario = async(req, res) =>{
+getInventario = async(req, res) =>{
 
     const inventarios = await Inventario.find();
     res.send(inventarios);

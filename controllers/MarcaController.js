@@ -1,7 +1,7 @@
 const Marca = require('./../models/Marca');
 
 
-const getMarca = async(req, res) =>{
+getMarca = async(req, res) =>{
 
     const marcas = await Marca.find();
     res.send(marcas);
@@ -22,10 +22,22 @@ setMarca = async (req, res)=> {
 
 };
 
+deleteMarca = async (req, res)=> {
+    const {id} = req.body;
+    await Marca.findByIdAndDelete(id);
+    res.send(`Marca de equipo borrado`);
+
+};
+
+updateMarca = async (req, res)=>{
+    const {id, nombre, estado} = req.body;
+            await Marca.findByIdAndUpdate(id, {nombre, estado});
+        res.send(`Marca de equipo Actualizado`);
+}
 
 
 
 
 
 
-module.exports = {getMarca, setMarca};
+module.exports = {getMarca, setMarca, deleteMarca, updateMarca};

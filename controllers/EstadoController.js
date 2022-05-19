@@ -1,13 +1,11 @@
 const EstadoEquipo = require('./../models/EstadoEquipo');
 
 
-const getEstadoEquipo = async(req, res) =>{
+getEstadoEquipo = async(req, res) =>{
 
     const estados = await EstadoEquipo.find();
     res.send(estados);
 }
-
-
 
 setEstadoEquipo = async (req, res)=> {
     const {nombre, estado} = req.body;
@@ -23,9 +21,24 @@ setEstadoEquipo = async (req, res)=> {
 };
 
 
+deleteEstadoEquipo = async (req, res)=> {
+    const {id} = req.body;
+    await EstadoEquipo.findByIdAndDelete(id);
+    res.send(`Estado de equipo borrado`);
+
+};
+
+updateEstadoEquipo = async (req, res)=>{
+    const {id, nombre, estado} = req.body;
+            await EstadoEquipo.findByIdAndUpdate(id, {nombre, estado});
+        res.send(`Estado de equipo Actualizado`);
+}
 
 
 
 
 
-module.exports = {getEstadoEquipo, setEstadoEquipo};
+
+
+
+module.exports = {getEstadoEquipo, setEstadoEquipo, deleteEstadoEquipo, updateEstadoEquipo};

@@ -1,7 +1,7 @@
 const Usuario = require('./../models/Usuario');
 
 
-const getUsuarios = async(req, res) =>{
+getUsuarios = async(req, res) =>{
 
     const usuarios = await Usuario.find();
     console.log(usuarios)
@@ -17,10 +17,21 @@ setUsuarios = async (req, res)=> {
     res.send("Usuario Creado")
 };
 
+deleteUsuario = async (req, res)=> {
+    const {id} = req.body;
+    await Usuario.findByIdAndDelete(id);
+    res.send(`Usuario borrado`);
+
+};
+
+updateUsuario = async (req, res)=>{
+    const {id, nombre, email, estado} = req.body;
+            await Usuario.findByIdAndUpdate(id, {nombre, email, estado});
+        res.send(`Usuario Actualizado`);
+}
 
 
 
 
 
-
-module.exports = {getUsuarios, setUsuarios};
+module.exports = {getUsuarios, setUsuarios, deleteUsuario, updateUsuario};
