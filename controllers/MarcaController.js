@@ -10,8 +10,8 @@ const getMarca = async(req, res) =>{
 
 
 setMarca = async (req, res)=> {
-    const {nombre, estado, fechaCreacion, fechaActualizacion} = req.body;
-    const marca = new Marca ({nombre, estado, fechaCreacion, fechaActualizacion});
+    const {nombre, estado} = req.body;
+    const marca = new Marca ({nombre, estado});
     try{
         await marca.save();
         res.send("Marca del equipo Creado")

@@ -10,8 +10,8 @@ const getEstadoEquipo = async(req, res) =>{
 
 
 setEstadoEquipo = async (req, res)=> {
-    const {nombre, estado, fechaCreacion, fechaActualizacion} = req.body;
-    const estadoEquipo = new EstadoEquipo ({nombre, estado, fechaCreacion, fechaActualizacion});
+    const {nombre, estado} = req.body;
+    const estadoEquipo = new EstadoEquipo ({nombre, estado});
     try{
         await estadoEquipo.save();
         res.send("Estado del equipo Creado")

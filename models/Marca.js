@@ -9,17 +9,8 @@ const MarcaSchema = Schema({
         type: String,
         required: true,
         enum:['Activo', 'Inactivo'],
-    },
-    fechaCreacion: {
-        type:Date,
-        required:true,
-    },
-    fechaActualizacion: {
-        type:Date,
-        required:true,
     }
-
-});
+}, { timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' } });
 
 //creamos la coleción en mongodb a partir del Schema y lo exportamos
 

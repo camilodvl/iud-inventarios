@@ -12,6 +12,7 @@ const port =3001;
 
 //Middleware
 app.use(express.json());
+var timestamp = new Date().getTime();
 
 //Rutas
 app.use(require('./routes/usuarios'));
@@ -23,6 +24,6 @@ app.use(require('./routes/inventario'));
 //Inicio de conexión y del servidor y puerto
 getConnection();
 app.listen(port, () => {
-console.log(`Server on port ${port}`);
+console.log(`Server on port ${port} in ${timestamp}`);
 
 })

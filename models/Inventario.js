@@ -14,14 +14,6 @@ const InventarioSchema = Schema({
         type: String,
         required: true,
     },
-    fechaCreacion: {
-        type:Date,
-        required:true,
-    },
-    fechaActualizacion: {
-        type:Date,
-        required:true,
-    },
     foto: {
         type:String,
         required:true,
@@ -58,7 +50,7 @@ const InventarioSchema = Schema({
 
 
 
-});
+}, { timestamps: { createdAt: 'fechaCreacion', updatedAt: 'fechaActualizacion' } });
 
 //creamos la coleción en mongodb a partir del Schema y lo exportamos
 

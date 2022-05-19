@@ -10,9 +10,9 @@ const getInventario = async(req, res) =>{
 
 
 setInventario = async (req, res)=> {
-    const {serial, modelo, descripcion, fechaCreacion, fechaActualizacion, foto, precio,
+    const {serial, modelo, descripcion, foto, precio,
     fechaCompra, usuario, marca, tipoEquipo, estadoEquipo} = req.body;
-    const inventario = new Inventario ({serial, modelo, descripcion, fechaCreacion, fechaActualizacion, foto, precio,
+    const inventario = new Inventario ({serial, modelo, descripcion, foto, precio,
         fechaCompra, usuario, marca, tipoEquipo, estadoEquipo});
     try{
         await inventario.save();

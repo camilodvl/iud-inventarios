@@ -11,8 +11,8 @@ const getUsuarios = async(req, res) =>{
 
 
 setUsuarios = async (req, res)=> {
-    const {nombre, email, estado, fechaCreacion, fechaActualizacion} = req.body;
-    const usuario = new Usuario ({nombre, email, estado, fechaCreacion, fechaActualizacion});
+    const {nombre, email, estado} = req.body;
+    const usuario = new Usuario ({nombre, email, estado});
     await usuario.save();
     res.send("Usuario Creado")
 };
