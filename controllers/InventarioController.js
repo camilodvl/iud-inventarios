@@ -24,10 +24,24 @@ setInventario = async (req, res)=> {
 
 };
 
+deleteInventario = async (req, res)=> {
+    const {id} = req.body;
+    await Inventario.findByIdAndDelete(id);
+    res.send(`El inventario ha sido eliminado :D`);
+};
+
+updateInventario = async (req, res)=>{
+    const {id, serial, modelo, descripcion, foto, precio,
+        fechaCompra, usuario, marca, tipoEquipo, estadoEquipo} = req.body;
+        await Inventario.findByIdAndUpdate(id, {serial, modelo, descripcion, foto, precio,
+            fechaCompra, usuario, marca, tipoEquipo, estadoEquipo})
+        res.send(`Estado del inventario Actualizado`);
+}
 
 
 
 
 
 
-module.exports = {getInventario, setInventario};
+
+module.exports = {getInventario, setInventario, deleteInventario, updateInventario};
