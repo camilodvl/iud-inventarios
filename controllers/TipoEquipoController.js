@@ -2,9 +2,14 @@ const TipoEquipo = require('./../models/TipoEquipo');
 
 
 getTipoEquipo = async(req, res) =>{
+    try{
+        const tipos = await TipoEquipo.find();
+        res.send(tipos);
+    }catch(err){
+        console.log(err);
+        res.status(500).send(`Error del servidor, consulte los logs`);
+    }
 
-    const tipos = await TipoEquipo.find();
-    res.send(tipos);
 }
 
 
@@ -17,7 +22,8 @@ setTipoEquipo = async (req, res)=> {
         res.send("Tipo del equipo Creado")
 
     }catch (err){
-        console.log(err)
+        console.log(err);
+        res.status(500).send(`Error del servidor, consulte los logs`);
     }
 
 };
@@ -25,15 +31,27 @@ setTipoEquipo = async (req, res)=> {
 
 deleteTipoEquipo = async (req, res)=> {
     const {id} = req.body;
-    await TipoEquipo.findByIdAndDelete(id);
-    res.send(`Tipo de equipo borrado`);
+    try{
+        await TipoEquipo.findByIdAndDelete(id);
+        res.send(`Tipo de equipo borrado`);
+    }catch(err){
+        console.log(err);
+        res.status(500).send(`Error del servidor, consulte los logs`);
+    }
+
 
 };
 
 updateTipoEquipo = async (req, res)=>{
     const {id, nombre, estado} = req.body;
-            await TipoEquipo.findByIdAndUpdate(id, {nombre, estado});
+    try{
+        await TipoEquipo.findByIdAndUpdate(id, {nombre, estado});
         res.send(`Tipo de equipo Actualizado`);
+    }catch(err){
+        console.log(err);
+        res.status(500).send(`Error del servidor, consulte los logs`);
+    }
+
 }
 
 
