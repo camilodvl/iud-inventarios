@@ -5,10 +5,11 @@ const Marca = require('./models/Marca');
 const Inventario = require('./models/Inventario');
 const TipoEquipo = require ('./models/TipoEquipo')
 const Usuario = require ('./models/Usuario');
+require('dotenv').config();
 
 //Configuración del servidor
 const app = express();
-const port =3001;
+const port =process.env.PORT;
 
 //Middleware
 app.use(express.json());
