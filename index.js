@@ -6,6 +6,7 @@ const Inventario = require('./models/Inventario');
 const TipoEquipo = require ('./models/TipoEquipo')
 const Usuario = require ('./models/Usuario');
 require('dotenv').config();
+const cors = require('cors');
 
 //Configuración del servidor
 const app = express();
@@ -13,7 +14,7 @@ const port =process.env.PORT;
 
 //Middleware
 app.use(express.json());
-
+app.use(cors());
 
 //Rutas
 app.use(require('./routes/usuarios'));
