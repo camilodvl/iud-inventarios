@@ -10,6 +10,17 @@ getUsuarios = async (req, res) => {
   }
 };
 
+getOneUsuario = async (req, res) => {
+  const {id} = req.params;
+  try {
+    const usuario = await Usuario.findById(id);
+    res.send(usuario);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(`Error del servidor, consulte los logs`);
+  }
+};
+
 setUsuarios = async (req, res) => {
   const { nombre, email, estado } = req.body;
   const usuario = new Usuario({ nombre, email, estado });
@@ -44,4 +55,4 @@ updateUsuario = async (req, res) => {
   }
 };
 
-module.exports = { getUsuarios, setUsuarios, deleteUsuario, updateUsuario };
+module.exports = { getUsuarios, setUsuarios, deleteUsuario, updateUsuario, getOneUsuario };
