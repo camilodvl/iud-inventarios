@@ -10,6 +10,17 @@ getMarca = async (req, res) => {
   }
 };
 
+getOneMarca = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const marca = await Marca.findById(id);
+    res.send(marca);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(`Error del servidor, consulte los logs`);
+  }
+};
+
 setMarca = async (req, res) => {
   const { nombre, estado } = req.body;
   const marca = new Marca({ nombre, estado });
@@ -44,4 +55,4 @@ updateMarca = async (req, res) => {
   }
 };
 
-module.exports = { getMarca, setMarca, deleteMarca, updateMarca };
+module.exports = { getMarca, setMarca, deleteMarca, updateMarca, getOneMarca };

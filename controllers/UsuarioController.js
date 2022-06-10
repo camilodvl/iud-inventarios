@@ -11,7 +11,7 @@ getUsuarios = async (req, res) => {
 };
 
 getOneUsuario = async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   try {
     const usuario = await Usuario.findById(id);
     res.send(usuario);
@@ -28,8 +28,7 @@ setUsuarios = async (req, res) => {
     await usuario.save();
     res.send("Usuario Creado");
   } catch (err) {
-    console.log(err);
-    res.status(500).send(`Error del servidor, consulte los logs`);
+    res.status(501).send("Error");
   }
 };
 
@@ -55,4 +54,10 @@ updateUsuario = async (req, res) => {
   }
 };
 
-module.exports = { getUsuarios, setUsuarios, deleteUsuario, updateUsuario, getOneUsuario };
+module.exports = {
+  getUsuarios,
+  setUsuarios,
+  deleteUsuario,
+  updateUsuario,
+  getOneUsuario,
+};

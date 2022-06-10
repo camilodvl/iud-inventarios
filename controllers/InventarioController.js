@@ -5,10 +5,21 @@ getInventario = async (req, res) => {
     const inventarios = await Inventario.find().populate([
       { path: "usuario", select: "nombre email" },
       { path: "marca", select: "nombre" },
-      { path: "tipoEquipo", select:"nombre" },
-      { path: "estadoEquipo",select:"nombre" },
+      { path: "tipoEquipo", select: "nombre" },
+      { path: "estadoEquipo", select: "nombre" },
     ]);
     res.send(inventarios);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(`Error del servidor, consulte los logs`);
+  }
+};
+
+getOneInventario = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const inventario = await Inventario.findById(id);
+    res.send(inventario);
   } catch (err) {
     console.log(err);
     res.status(500).send(`Error del servidor, consulte los logs`);
@@ -99,4 +110,5 @@ module.exports = {
   setInventario,
   deleteInventario,
   updateInventario,
+  getOneInventario,
 };

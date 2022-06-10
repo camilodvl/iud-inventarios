@@ -10,6 +10,17 @@ getEstadoEquipo = async (req, res) => {
   }
 };
 
+getOneEstadoEquipo = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const estadoEquipo = await EstadoEquipo.findById(id);
+    res.send(estadoEquipo);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(`Error del servidor, consulte los logs`);
+  }
+};
+
 setEstadoEquipo = async (req, res) => {
   const { nombre, estado } = req.body;
   const estadoEquipo = new EstadoEquipo({ nombre, estado });
@@ -50,4 +61,5 @@ module.exports = {
   setEstadoEquipo,
   deleteEstadoEquipo,
   updateEstadoEquipo,
+  getOneEstadoEquipo,
 };
