@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+ security-api-service:
+  container_name: iud-inventarios
+  image: iud-inventarios
+  build:
+   context: .
+  ports:
+   - "5015:3000"
+  networks:
+   - inventarios
+networks:
+ inventarios:
