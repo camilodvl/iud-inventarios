@@ -10,7 +10,7 @@ const cors = require('cors');
 
 //Configuración del servidor
 const app = express();
-const port =process.env.PORT;
+const port =3000;
 
 //Middleware
 app.use(express.json());
