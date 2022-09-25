@@ -1,6 +1,6 @@
 version: "3.7"
 services:
- iud-inventarios:
+ security-api-service:
   container_name: iud-inventarios
   image: iud-inventarios
   build:
